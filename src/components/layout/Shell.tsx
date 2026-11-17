@@ -1,3 +1,5 @@
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { Footer } from './Footer'
@@ -23,6 +25,8 @@ export function Shell() {
       <Navbar />
       <Outlet />
       <Footer />
+      <Analytics />
+      <SpeedInsights />
     </>
   )
 }

@@ -19,27 +19,32 @@ const principles = [
   },
 ]
 
-export function Philosophy() {
+export function Philosophy({ compact = false }: { compact?: boolean }) {
   const ref = useReveal<HTMLElement>()
 
   return (
-    <section ref={ref} id="philosophy" className="section-nq border-t border-line">
-      <div className="container-nq grid gap-12 lg:grid-cols-2 lg:gap-16">
+    <section
+      ref={ref}
+      id="philosophy"
+      className={`${compact ? 'section-nq-compact' : 'section-nq'} border-t border-line`}
+    >
+      <div className="container-nq grid gap-12 lg:grid-cols-2 lg:gap-20">
         <div className="reveal">
-          <h2 className="text-3xl font-semibold tracking-tight text-ink">
+          <p className="eyebrow">Principles</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink md:text-4xl">
             Evidence over assumptions
           </h2>
-          <p className="mt-4 text-lg font-medium text-ink/85">
-            Every hypothesis deserves a test. Every result deserves scrutiny.
+          <p className="mt-5 max-w-[28ch] font-display text-3xl leading-snug text-ink italic md:text-4xl">
+            Every hypothesis deserves a test.
           </p>
-          <p className="mt-4 max-w-[46ch] text-[15px] leading-relaxed text-muted">
+          <p className="mt-5 max-w-[46ch] text-[15px] leading-relaxed text-muted">
             We document what appears to work, what fails, and what remains uncertain. These are
             guiding principles — not a claim that every experiment already meets an ideal.
           </p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2">
           {principles.map((item) => (
-            <article key={item.title} className="reveal border-t border-line pt-4">
+            <article key={item.title} className="reveal border-t border-line pt-5">
               <h3 className="text-sm font-semibold text-ink">{item.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{item.body}</p>
             </article>

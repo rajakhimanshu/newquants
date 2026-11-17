@@ -2,15 +2,22 @@ import { ArrowUpRight } from 'lucide-react'
 import { founder } from '../data/founder'
 import { useReveal } from '../hooks/useReveal'
 
-export function About() {
+export function About({ compact = false }: { compact?: boolean }) {
   const ref = useReveal<HTMLElement>()
 
   return (
-    <section ref={ref} id="about" className="section-nq border-t border-line bg-surface">
+    <section
+      ref={ref}
+      id="about"
+      className={`${compact ? 'section-nq-compact' : 'section-nq'} border-t border-line bg-surface`}
+    >
       <div className="container-nq">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div className="reveal">
-            <h2 className="text-3xl font-semibold tracking-tight text-ink">{founder.name}</h2>
+            <p className="eyebrow">About</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+              {founder.name}
+            </h2>
             <p className="mt-2 text-sm text-muted">{founder.role}, NewQuants</p>
           </div>
           <div className="reveal max-w-xl">

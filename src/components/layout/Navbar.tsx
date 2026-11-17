@@ -4,6 +4,8 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { siteConfig } from '../../data/site'
 
 const links = [
+  { to: '/#lab', label: 'Lab' },
+  { to: '/tools', label: 'Tools' },
   { to: '/research', label: 'Research' },
   { to: '/#projects', label: 'Projects' },
   { to: '/#methodology', label: 'Methodology' },
@@ -38,20 +40,34 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors ${
-        scrolled || open ? 'border-b border-line bg-paper/95 backdrop-blur-sm' : 'bg-paper/80'
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled || open
+          ? 'border-b border-line bg-paper/90 shadow-[0_8px_30px_-24px_rgba(17,17,16,0.35)] backdrop-blur-md'
+          : 'bg-transparent'
       }`}
     >
-      <nav className="container-nq flex h-14 items-center justify-between" aria-label="Primary">
-        <Link to="/" className="text-sm font-semibold tracking-tight text-ink">
-          {siteConfig.name}
+      <nav className="container-nq flex h-16 items-center justify-between" aria-label="Primary">
+        <Link to="/" className="group inline-flex items-center gap-2.5">
+          <span
+            className="relative flex h-7 w-7 items-center justify-center rounded-md bg-ink text-[11px] font-semibold tracking-tight text-paper"
+            aria-hidden
+          >
+            NQ
+            <span className="absolute -right-0.5 -bottom-0.5 h-1.5 w-1.5 rounded-full bg-signal" />
+          </span>
+          <span className="text-sm font-semibold tracking-tight text-ink transition group-hover:opacity-80">
+            {siteConfig.name}
+          </span>
         </Link>
 
-        <ul className="hidden items-center gap-6 md:flex">
+        <ul className="hidden items-center gap-7 md:flex">
           {links.map((link) =>
             link.to.startsWith('/#') ? (
               <li key={link.to}>
-                <a href={hashLink(link.to.slice(1))} className="text-[13px] text-muted hover:text-ink">
+                <a
+                  href={hashLink(link.to.slice(1))}
+                  className="text-[13px] text-muted transition hover:text-ink"
+                >
                   {link.label}
                 </a>
               </li>
@@ -60,7 +76,7 @@ export function Navbar() {
                 <NavLink
                   to={link.to}
                   className={({ isActive }) =>
-                    `text-[13px] ${isActive ? 'text-ink' : 'text-muted hover:text-ink'}`
+                    `text-[13px] transition ${isActive ? 'text-ink' : 'text-muted hover:text-ink'}`
                   }
                 >
                   {link.label}
@@ -73,7 +89,7 @@ export function Navbar() {
               href={siteConfig.linkedInUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-md bg-ink px-3 py-1.5 text-[13px] font-medium text-paper"
+              className="rounded-lg bg-ink px-3.5 py-2 text-[13px] font-medium text-paper transition hover:opacity-90"
             >
               Connect
             </a>
@@ -82,7 +98,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className="inline-flex rounded-md border border-line p-2 text-ink md:hidden"
+          className="inline-flex rounded-lg border border-line bg-surface/70 p-2 text-ink backdrop-blur-sm md:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? 'Close menu' : 'Open menu'}
@@ -93,7 +109,7 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div id="mobile-menu" className="border-t border-line bg-paper md:hidden">
+        <div id="mobile-menu" className="border-t border-line bg-paper/98 backdrop-blur-md md:hidden">
           <ul className="container-nq flex flex-col py-3">
             {links.map((link) => (
               <li key={link.to}>
@@ -121,7 +137,7 @@ export function Navbar() {
                 href={siteConfig.linkedInUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block rounded-md bg-ink px-3 py-2.5 text-center text-sm font-medium text-paper"
+                className="block rounded-lg bg-ink px-3 py-2.5 text-center text-sm font-medium text-paper"
               >
                 Connect
               </a>

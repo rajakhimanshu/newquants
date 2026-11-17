@@ -20,6 +20,21 @@ export function Footer() {
               <p className="mb-3 text-[12px] text-soft">Navigate</p>
               <ul className="space-y-2 text-sm text-muted">
                 <li>
+                  <a href="/#lab" className="hover:text-ink">
+                    Lab
+                  </a>
+                </li>
+                <li>
+                  <Link to="/tools" className="hover:text-ink">
+                    Tools
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/tools/monte-carlo" className="hover:text-ink">
+                    Monte Carlo
+                  </Link>
+                </li>
+                <li>
                   <Link to="/research" className="hover:text-ink">
                     Research
                   </Link>
