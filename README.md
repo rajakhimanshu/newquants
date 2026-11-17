@@ -1,9 +1,15 @@
 # NewQuants
 
-Independent quantitative research and technology.
+Independent quantitative research and technology — **public face** of the Proofbook lab.
 
 **Domain:** [https://newquants.xyz](https://newquants.xyz)  
 **Tagline:** Research. Test. Understand.
+
+| | |
+|---|---|
+| **Lab archive** | [quant-research-lab](https://github.com/rajakhimanshu/quant-research-lab) |
+| **Scoreboard (2026-11-17)** | **1803** frozen tests · **1688** REJECT · **1** PAPER_CANDIDATE (H309) · **0** live survivors |
+| **Algo build (private)** | [algo-trading-system](https://github.com/rajakhimanshu/algo-trading-system) — paper/ARM, not this site |
 
 ## Stack
 
