@@ -25,6 +25,32 @@ export interface ResearchEntry {
  */
 export const researchEntries: ResearchEntry[] = [
   {
+    id: 'H309',
+    slug: 'h309-gbpusd-ny-rollover-fade',
+    title: 'Does fading GBPUSD at the NY 17:00 rollover beat the same fade at 14:00?',
+    category: 'Systematic Strategies',
+    publishedAt: '2026-11-16',
+    status: 'In Progress',
+    decision: 'PAPER_CANDIDATE',
+    question:
+      'On GBPUSD M15, does fading the 17:00 America/New_York bar (rollover inventory pressure) beat fading the 14:00 bar on the same days after spread and slippage?',
+    hypothesis:
+      'NY 17:00 rollover forces GBPUSD inventory adjustments; fading that bar should beat the same fade at 14:00 when roll pressure is lighter.',
+    dataset:
+      'GBPUSD M15 (Proofbook book: fx_m15). Costs: retail spread + slippage. Locked train/validation; OOS unlocked after lab clear.',
+    methodology:
+      'Treatment: fade the M15 bar at 17:00 NY when prior range clears a 0.25 ATR gate, 1:1 ATR stop/target, 8-bar horizon, flat by NY close. Baseline: identical fade at 14:00 NY. Frozen clock — no retune of hours or RR.',
+    evaluation:
+      'Cost-adjusted hit rate and mean R on train, validation, then OOS. Paper only after OOS_PASS and a human paper label. Not live.',
+    results:
+      'Train 57.5% vs 44.1% (mean R +0.15); validation 61.3% vs 38.1% (mean R +0.24); OOS 59.4% vs 41.4% n=138 (mean R +0.16). Labelled PAPER_CANDIDATE.',
+    limitations:
+      'Single pair, single clock, frozen 1:1 geometry. Paper is not proof of live expectancy. Sibling clock variants (e.g. H429) are weaker and are not a second edge. Do not retune hours after seeing results.',
+    conclusion:
+      'PAPER_CANDIDATE. Cleared train/val/OOS on this frozen spec. Forward paper trading only — not an EA, not a live go. Execution work continues outside this public archive.',
+    repoUrl: 'https://github.com/rajakhimanshu/quant-research-lab',
+  },
+  {
     id: 'H1',
     slug: 'h1-event-reversal',
     title: 'Does a high-impact news filter improve large-bar fades?',
@@ -48,6 +74,7 @@ export const researchEntries: ResearchEntry[] = [
       'Single frozen geometry (2.5 ATR / 40% retrace). News calendar coverage and broker timing can differ from live execution. Result is not a claim about all event strategies — only this exact fade rule.',
     conclusion:
       'REJECT. Filtering large-bar fades to high-impact news made the rule worse than the unfiltered large bar. Spec closed — do not retune 2.5 ATR or 40% retrace to chase a better number.',
+    repoUrl: 'https://github.com/rajakhimanshu/quant-research-lab',
   },
 ]
 

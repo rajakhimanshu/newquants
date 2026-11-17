@@ -19,6 +19,7 @@ export const projects: Project[] = [
     description:
       'Retail FX + XAUUSD research lab: frozen hypotheses, cost-adjusted backtests, locked train/validation, and an honest reject ledger. Powers the NewQuants research notes.',
     stack: ['Python', 'MetaTrader5', 'pandas', 'pytest'],
-    status: 'In Development',
+    status: 'Public',
+    repoUrl: 'https://github.com/rajakhimanshu/quant-research-lab',
   },
 ]
